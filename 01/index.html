@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 윤리: 인공지능의 그림자, 편향 이해하기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans KR', sans-serif; scroll-behavior: smooth; }
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        
+        /* Modal Animation */
+        .modal-fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        /* Custom Scrollbar for Modal */
+        .modal-content::-webkit-scrollbar { width: 8px; }
+        .modal-content::-webkit-scrollbar-track { background: #f1f1f1; }
+        .modal-content::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        .modal-content::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header / Hero Section -->
+    <header class="gradient-bg text-white py-20 px-6 text-center shadow-xl relative">
+        <!-- Home Button Added Here -->
+        <div class="absolute top-6 left-6">
+            <a href="../index.html" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg backdrop-blur-md border border-white/20 transition font-medium text-sm">
+                <i class="fas fa-home"></i> 홈
+            </a>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block bg-indigo-500/20 text-indigo-300 px-4 py-1 rounded-full text-sm font-bold mb-6 border border-indigo-500/30">
+                AI Ethics Guide
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">인공지능의 윤리적 과제:<br><span class="text-indigo-400">편향성과 딜레마</span></h1>
+            <p class="text-lg md:text-xl font-light opacity-80 mb-10 leading-relaxed">인공지능은 인간의 데이터를 비추는 거울입니다.<br>그 속에 숨겨진 편향을 발견하고 윤리적 기준을 세워봅시다.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#section-bias" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-bold transition shadow-lg flex items-center gap-2">
+                    <i class="fas fa-play"></i> 학습 시작하기
+                </a>
+                <button onclick="openModal()" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-3 rounded-full font-bold transition flex items-center gap-2 shadow-lg">
+                    <i class="fas fa-image"></i> 인포그래픽 보기
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-md shadow-sm z-50 border-b">
+        <div class="max-w-5xl mx-auto flex justify-around p-3 text-sm md:text-base font-bold">
+            <button onclick="scrollToId('section-bias')" class="hover:text-indigo-600 transition">편향 원인</button>
+            <button onclick="scrollToId('section-compare')" class="hover:text-indigo-600 transition">인간 vs AI</button>
+            <button onclick="scrollToId('section-dilemma')" class="hover:text-indigo-600 transition">윤리적 딜레마</button>
+            <button onclick="scrollToId('section-quiz')" class="hover:text-indigo-600 transition text-indigo-600">학습 퀴즈</button>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
+        
+        <!-- Section 1: AI Bias Causes -->
+        <section id="section-bias" class="scroll-mt-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold mb-4">1. 인공지능 편향의 두 가지 원인</h2>
+                <div class="h-1 w-20 bg-indigo-500 mx-auto rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 card-hover text-center">
+                    <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-8 mx-auto text-3xl rotate-3">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold mb-4">학습 데이터 편향</h3>
+                    <p class="text-slate-600 leading-relaxed">인간이 만든 불균형한 데이터를 학습할 때 발생합니다. 특정 집단에 대한 정보가 부족하면 AI는 차별적인 판단을 내리게 됩니다.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 card-hover text-center">
+                    <div class="w-20 h-20 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-8 mx-auto text-3xl -rotate-3">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold mb-4">알고리즘 편향</h3>
+                    <p class="text-slate-600 leading-relaxed">데이터를 처리하는 규칙(수식)에 설계자의 의도나 사회적 고정관념이 투영될 때 발생하며, 편향을 구조적으로 재생산합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Comparison -->
+        <section id="section-compare" class="scroll-mt-24">
+            <div class="bg-slate-100 rounded-[2.5rem] p-8 md:p-12">
+                <h2 class="text-2xl font-extrabold mb-10 text-center">인간 vs 인공지능의 편향 차이</h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white rounded-2xl shadow-sm border-separate border-spacing-0 overflow-hidden">
+                        <thead class="bg-slate-800 text-white">
+                            <tr>
+                                <th class="p-5 text-left font-bold">비교 항목</th>
+                                <th class="p-5 text-left font-bold">인간의 편향</th>
+                                <th class="p-5 text-left font-bold">인공지능의 편향</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y text-sm md:text-base">
+                            <tr>
+                                <td class="p-5 font-bold bg-slate-50">근본 이유</td>
+                                <td class="p-5">경험, 문화, 교육 등 환경</td>
+                                <td class="p-5 font-medium text-indigo-600 italic">학습 데이터와 알고리즘</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-bold bg-slate-50">수정 가능성</td>
+                                <td class="p-5">교육과 자각을 통해 수정</td>
+                                <td class="p-5 font-medium text-green-600">데이터/알고리즘 기술적 변경</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-bold bg-slate-50">영향력</td>
+                                <td class="p-5">개인/집단의 선택에 영향</td>
+                                <td class="p-5 font-medium text-red-600">시스템 전반에 광범위한 영향</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Dilemma -->
+        <section id="section-dilemma" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold mb-4">2. 윤리적 딜레마</h2>
+                <p class="text-slate-500">정답이 없는 상황에서 AI는 어떤 선택을 해야 할까요?</p>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-lg border border-indigo-50 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-10 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+                    <i class="fas fa-balance-scale text-9xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <i class="fas fa-car-side text-indigo-500"></i> 자율주행차의 트롤리 딜레마
+                </h3>
+                <p class="text-slate-600 mb-8 leading-relaxed max-w-2xl">
+                    "브레이크가 고장 난 차량이 직진하면 5명의 보행자를 치게 되고, 방향을 틀면 1명의 보행자를 치게 됩니다. AI는 누구를 보호하도록 설계되어야 할까요?"
+                </p>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
+                        <i class="fas fa-check-circle text-green-500"></i> <span class="text-sm font-bold">결과의 공정성</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
+                        <i class="fas fa-check-circle text-green-500"></i> <span class="text-sm font-bold">이익 우선순위</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
+                        <i class="fas fa-check-circle text-green-500"></i> <span class="text-sm font-bold">사회적 합의</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Quiz -->
+        <section id="section-quiz" class="scroll-mt-24">
+            <div class="bg-indigo-900 text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-extrabold mb-10 text-center">AI 윤리 정복 퀴즈</h2>
+                    <div id="quiz-box">
+                        <div class="mb-4 text-indigo-300 font-mono text-sm" id="quiz-step">Question 1/3</div>
+                        <h3 class="text-2xl font-bold mb-10 leading-tight" id="quiz-question">AI 편향의 원인은 무엇인가요?</h3>
+                        <div class="grid gap-4" id="quiz-options"></div>
+                    </div>
+                    <div id="quiz-result" class="hidden text-center py-10">
+                        <div class="text-6xl mb-8">🎉</div>
+                        <h3 class="text-4xl font-extrabold mb-6">학습 완료!</h3>
+                        <p class="text-indigo-200 text-lg mb-10">당신은 이제 인공지능 윤리의 전문가로 한 걸음 다가갔습니다.</p>
+                        <div class="flex flex-col md:flex-row justify-center gap-4">
+                            <button onclick="resetQuiz()" class="bg-white text-indigo-900 px-10 py-4 rounded-full font-bold hover:bg-indigo-50 transition shadow-lg">다시 도전</button>
+                            <button onclick="openModal()" class="bg-amber-500 text-white px-10 py-4 rounded-full font-bold hover:bg-amber-600 transition shadow-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-image"></i> 인포그래픽 복습
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Background Decoration -->
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                <div class="absolute -top-10 -left-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- INFOGRAPHIC MODAL -->
+    <div id="infographic-modal" class="fixed inset-0 bg-black/90 z-[100] hidden flex items-center justify-center p-4 transition-all" onclick="closeModal()">
+        <div class="relative max-w-6xl w-full bg-white rounded-[2rem] overflow-hidden modal-fade-in shadow-2xl flex flex-col max-h-[95vh]" onclick="event.stopPropagation()">
+            <!-- Header -->
+            <div class="p-6 border-b bg-slate-50 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-indigo-600 text-white rounded-xl flex items-center justify-center">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-800">인공지능 윤리 가이드</h3>
+                        <p class="text-xs text-slate-500">편향성과 딜레마의 시각적 요약</p>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-red-500 text-3xl transition p-2">
+                    <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+            
+            <!-- Image Content Area -->
+            <div class="bg-slate-200 overflow-auto flex-1 flex justify-center items-start modal-content p-4">
+                <div class="relative w-full max-w-5xl">
+                    <img id="main-infographic" src="unnamed.jpg" alt="AI 윤리 인포그래픽" class="w-full h-auto rounded-xl shadow-xl border-4 border-white" onerror="handleImageError()">
+                    
+                    <div id="image-error-ui" class="hidden bg-white p-12 text-center rounded-xl shadow-inner w-full">
+                        <div class="max-w-md mx-auto">
+                            <i class="fas fa-image text-slate-200 text-9xl mb-8"></i>
+                            <h4 class="text-2xl font-bold text-slate-800 mb-4">이미지를 불러올 수 없습니다</h4>
+                            <p class="text-slate-500 mb-8">업로드하신 'unnamed.jpg' 파일이 유효한지 확인해 주세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 bg-slate-900 text-white text-center text-xs tracking-wider shrink-0 flex justify-center gap-8">
+                <span class="opacity-70 flex items-center gap-1"><i class="fas fa-info-circle"></i> 인포그래픽 전체보기</span>
+                <span class="opacity-70 flex items-center gap-1"><i class="fas fa-user-shield"></i> 윤리적 가이드 준수</span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-500 py-16 px-6 text-center border-t border-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-center gap-8 text-2xl mb-10 text-slate-700">
+                <i class="fas fa-robot"></i>
+                <i class="fas fa-balance-scale"></i>
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <p class="text-sm mb-4 leading-relaxed">인공지능의 기술 중립성을 넘어 비판적으로 수용할 때<br>우리는 더 공정하고 신뢰할 수 있는 기술 세상을 만들 수 있습니다.</p>
+            <p class="text-xs text-slate-700 font-mono uppercase tracking-widest mt-8">&copy; 2024 AI Ethics Education Dashboard</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToId(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+        
+        function openModal() { 
+            const modal = document.getElementById('infographic-modal');
+            modal.classList.remove('hidden'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        
+        function closeModal() { 
+            const modal = document.getElementById('infographic-modal');
+            modal.classList.add('hidden'); 
+            document.body.style.overflow = 'auto'; 
+        }
+
+        function handleImageError() {
+            document.getElementById('main-infographic').classList.add('hidden');
+            document.getElementById('image-error-ui').classList.remove('hidden');
+        }
+
+        // Quiz System
+        const quizData = [
+            { q: "인공지능이 편향된 결과를 내놓는 두 가지 주요 경로는?", options: ["데이터와 알고리즘", "컴퓨터와 스마트폰", "전력과 인터넷", "속도와 용량"], ans: 0 },
+            { q: "AI 편향과 인간 편향의 차이점 중 맞는 것은?", options: ["AI는 스스로 반성하여 수정한다", "인간의 편향이 더 넓은 범위에 영향을 준다", "AI는 시스템 전반에 광범위한 영향을 미친다", "AI는 교육을 통해 성격이 변한다"], ans: 2 },
+            { q: "MIT 연구 결과, 동방 국가에서 상대적으로 더 중시한 보호 대상은?", options: ["어린이", "노인", "유모차를 끄는 사람", "남성 경영인"], ans: 1 }
+        ];
+
+        let currentQuiz = 0;
+        function loadQuiz() {
+            if (currentQuiz >= quizData.length) {
+                document.getElementById('quiz-box').classList.add('hidden');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                return;
+            }
+            const data = quizData[currentQuiz];
+            document.getElementById('quiz-step').innerText = `Question ${currentQuiz + 1}/${quizData.length}`;
+            document.getElementById('quiz-question').innerText = data.q;
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-5 bg-white/5 border border-white/10 rounded-2xl text-left hover:bg-white/10 transition flex items-center gap-4 group";
+                btn.onclick = () => {
+                    if(idx === data.ans) { 
+                        btn.classList.add('bg-green-500/30', 'border-green-400');
+                        setTimeout(() => { currentQuiz++; loadQuiz(); }, 600);
+                    } else { 
+                        btn.classList.add('bg-red-500/30', 'border-red-400'); 
+                        setTimeout(() => btn.classList.remove('bg-red-500/30', 'border-red-400'), 500); 
+                    }
+                };
+                btn.innerHTML = `<span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold group-hover:bg-indigo-500 transition">${idx + 1}</span> ${opt}`;
+                optionsBox.appendChild(btn);
+            });
+        }
+        function resetQuiz() { currentQuiz = 0; document.getElementById('quiz-box').classList.remove('hidden'); document.getElementById('quiz-result').classList.add('hidden'); loadQuiz(); }
+        
+        window.onload = function() {
+            loadQuiz();
+        };
+    </script>
+</body>
+</html>
