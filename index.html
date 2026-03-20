@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인공지능 기초 - 수업 랜딩페이지</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-brain text-indigo-600 text-2xl"></i>
+                <span class="font-bold text-xl tracking-tight">AI 기초 수업</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="#home" class="hover:text-indigo-600 transition">홈</a>
+                <a href="#ethics" class="hover:text-indigo-600 transition">인공지능 윤리</a>
+                <a href="./01/index.html" class="hover:text-indigo-600 transition">윤리적딜레마</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">문의</a>
+            </div>
+            <button class="md:hidden text-2xl" id="menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
+            <div class="lg:w-1/2 text-center lg:text-left z-10">
+                <span class="inline-block py-1 px-4 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm mb-6">
+                    2025학년도 정보 교과 수업
+                </span>
+                <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                    미래를 설계하는 <br>
+                    <span class="gradient-text">인공지능의 세계</span>
+                </h1>
+                <p class="text-lg text-slate-600 mb-10 max-w-xl mx-auto lg:mx-0">
+                    단순한 기술 습득을 넘어, 인간 중심의 기술을 이해하고 AI와 공존하는 역량을 키웁니다.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#ethics" class="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition">수업 내용 보기</a>
+                    <!-- 버튼 텍스트 변경 및 링크 수정 -->
+                    <a href="./01/index.html" class="px-8 py-4 bg-white border border-slate-200 rounded-2xl font-bold hover:bg-slate-50 transition">윤리적딜레마</a>
+                </div>
+            </div>
+            <div class="lg:w-1/2 mt-20 lg:mt-0 flex justify-center relative">
+                <div class="absolute -top-10 -left-10 w-64 h-64 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+                <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+                <div class="float-animation w-72 h-72 md:w-96 md:h-96 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl shadow-2xl flex items-center justify-center transform rotate-6">
+                    <i class="fa-solid fa-robot text-white text-8xl md:text-9xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Ethics Section -->
+    <section id="ethics" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">🤖 인공지능 윤리 가이드</h2>
+                <p class="text-slate-500">인간과 AI가 공존하기 위해 우리가 지켜야 할 최소한의 약속</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="topic-card p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm">
+                    <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-scale-balanced text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">인간의 존엄성</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        인공지능은 인간의 생명과 안전을 위협하지 않으며, 모든 인간을 동등하게 존중해야 합니다.
+                    </p>
+                </div>
+                <div class="topic-card p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-hand-holding-heart text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">사회의 공익성</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        공동체의 행복과 인류의 지속 가능한 발전을 위해 인공지능 기술이 활용되어야 합니다.
+                    </p>
+                </div>
+                <div class="topic-card p-8 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">기술의 투명성</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        사용자가 인공지능의 결정 과정을 이해할 수 있도록 투명하고 공정한 정보가 제공되어야 합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-50 border-t border-slate-200 py-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            <div>
+                <div class="flex items-center space-x-2 mb-6">
+                    <i class="fa-solid fa-brain text-indigo-600 text-2xl"></i>
+                    <span class="font-bold text-xl tracking-tight">AI 기초 수업</span>
+                </div>
+                <p class="text-slate-500 max-w-sm mb-6">
+                    이 페이지는 인공지능 기초 수업의 윤리 토론을 위해 제작되었습니다. <br>
+                    수업 중 질문은 언제든지 환영합니다!
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center hover:bg-indigo-50 transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center hover:bg-indigo-50 transition"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-20">
+                <div>
+                    <h4 class="font-bold mb-6">수업 리소스</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="#" class="hover:text-indigo-600">수업 계획서</a></li>
+                        <li><a href="./01/index.html" class="hover:text-indigo-600 font-bold text-indigo-600">윤리적딜레마 실습</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">사례 연구 모음</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">학습 지원</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="#" class="hover:text-indigo-600">익명 질문함</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">교과서 PDF</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-200 text-center text-slate-400 text-sm">
+            &copy; 2025 정보 선생님. AI Ethics & Society Course.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        menuBtn.addEventListener('click', () => {
+            const container = document.createElement('div');
+            container.className = "fixed inset-0 z-[60] bg-slate-900/90 flex items-center justify-center p-6";
+            container.innerHTML = `
+                <div class="text-white text-center">
+                    <button id="close-menu" class="absolute top-6 right-6 text-3xl"><i class="fa-solid fa-xmark"></i></button>
+                    <ul class="space-y-8 text-2xl font-bold">
+                        <li><a href="#home" class="menu-link">홈</a></li>
+                        <li><a href="#ethics" class="menu-link">인공지능 윤리</a></li>
+                        <li><a href="./01/index.html" class="menu-link">윤리적딜레마</a></li>
+                        <li><a href="#contact" class="menu-link">문의</a></li>
+                    </ul>
+                </div>
+            `;
+            document.body.appendChild(container);
+            
+            const closeBtn = document.getElementById('close-menu');
+            const links = container.querySelectorAll('.menu-link');
+            
+            const close = () => document.body.removeChild(container);
+            closeBtn.onclick = close;
+            links.forEach(l => l.onclick = close);
+        });
+    </script>
+</body>
+</html>
